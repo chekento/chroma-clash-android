@@ -1,5 +1,11 @@
 plugins { id 'com.android.application' }
 
+def releaseStoreFile = System.getenv('CHROMA_UPLOAD_KEYSTORE_PATH')
+def releaseStorePassword = System.getenv('CHROMA_UPLOAD_KEYSTORE_PASSWORD')
+def releaseKeyAlias = System.getenv('CHROMA_UPLOAD_KEY_ALIAS')
+def releaseKeyPassword = System.getenv('CHROMA_UPLOAD_KEY_PASSWORD')
+def hasReleaseSigning = [releaseStoreFile, releaseStorePassword, releaseKeyAlias, releaseKeyPassword].every { it != null && !it.isBlank() }
+
 android {
     namespace 'cloud.kosch.chromaclash'
     compileSdk 36
@@ -12,10 +18,32 @@ android {
         versionName '1.0.0'
     }
 
+    signingConfigs {
+        if (hasReleaseSigning) {
+            create('release') {
+                storeFile file(releaseStoreFile)
+                storePassword releaseStorePassword
+                keyAlias releaseKeyAlias
+                keyPassword releaseKeyPassword
+            }
+        }
+    }
+
     buildTypes {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            if (hasReleaseSigning) {
+                signingConfig signingConfigs.getByName('release')
+            }
+        }
+    }
+}
+
+tasks.matching { it.name == 'bundleRelease' || it.name == 'assembleRelease' }.configureEach {
+    doFirst {
+        if (!hasReleaseSigning) {
+            throw new GradleException('Release signing is not configured. Set CHROMA_UPLOAD_KEYSTORE_PATH, CHROMA_UPLOAD_KEYSTORE_PASSWORD, CHROMA_UPLOAD_KEY_ALIAS and CHROMA_UPLOAD_KEY_PASSWORD.')
         }
     }
 }
