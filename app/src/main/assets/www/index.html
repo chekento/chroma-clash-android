@@ -155,5 +155,12 @@
 
   <div id="toast-stack" aria-live="polite"></div>
   <script src="game.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const resetScroll = () => requestAnimationFrame(() => window.scrollTo(0, 0));
+      document.getElementById('start-game-btn')?.addEventListener('click', resetScroll);
+      document.getElementById('summary-close')?.addEventListener('click', resetScroll);
+    });
+  </script>
 </body>
 </html>
