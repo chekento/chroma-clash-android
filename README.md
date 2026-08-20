@@ -53,10 +53,10 @@ APK output: `app/build/outputs/apk/debug/app-debug.apk`
 
 ## Project layout
 
-- `app/src/main/assets/www/` — production web game bundled into the APK
-- `web/` — convenient browser-source mirror
+- `app/src/main/assets/www/` — bundled Chroma Clash UI, styling and game engine
 - `app/src/main/java/.../MainActivity.java` — minimal hardened Android WebView shell
-- `.github/workflows/android-apk.yml` — repeatable APK build
+- `docs/GAME_DESIGN.md` — progression and long-term game design notes
+- `.github/workflows/android-apk.yml` — repeatable Android 16 APK build
 
 ## Privacy
 
