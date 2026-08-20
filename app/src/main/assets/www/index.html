@@ -1,0 +1,159 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,user-scalable=no">
+  <meta name="theme-color" content="#080913">
+  <title>Chroma Clash • Universia Coloralis</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="aurora a1"></div><div class="aurora a2"></div>
+  <div id="app-shell">
+    <header class="topbar">
+      <div class="brand-wrap">
+        <div class="brand-mark" aria-hidden="true"><span></span><span></span><span></span></div>
+        <div><h1>CHROMA CLASH</h1><div class="subtitle">UNIVERSIA COLORALIS • KoSch</div></div>
+      </div>
+      <button class="icon-btn" id="achievements-btn" aria-label="Achievements">🏆</button>
+    </header>
+
+    <section class="profile-card glass" id="profile-card">
+      <div class="profile-row">
+        <div>
+          <div class="eyebrow">CURRENT RANK</div>
+          <div id="rank-title" class="rank-title">Spectrum Initiate I</div>
+          <div id="level-label" class="muted">Rank 1 / 100</div>
+        </div>
+        <button id="rank-ladder-btn" class="rank-orb"><span id="rank-number">1</span><small>RANK</small></button>
+      </div>
+      <div class="xp-line"><span id="xp-label">0 / 440 XP</span><span id="daily-label">Day streak 1</span></div>
+      <div class="progress"><div id="xp-bar"></div></div>
+      <div class="stat-grid">
+        <div><b id="stat-rounds">0</b><span>Rounds</span></div>
+        <div><b id="stat-best">0</b><span>Best streak</span></div>
+        <div><b id="stat-avg">—</b><span>Avg accuracy</span></div>
+        <div><b id="stat-achievements">0</b><span>Achievements</span></div>
+      </div>
+    </section>
+
+    <main>
+      <section id="start-screen" class="screen active">
+        <div class="hero glass">
+          <div class="eyebrow">PERCEPTUAL COLOR COMBAT</div>
+          <h2>Recover the missing color.</h2>
+          <p>Read the mixture, reconstruct X and lock the closest color. Every answer is judged perceptually using CIE Lab ΔE — not forgiving RGB distance.</p>
+          <div class="equation-mini"><i></i><span>+</span><b>?</b><span>=</span><i></i></div>
+        </div>
+
+        <div class="panel glass">
+          <div class="panel-heading"><span>Difficulty</span><small>Higher risk • higher XP</small></div>
+          <div class="segmented" id="difficulty-options">
+            <button data-difficulty="easy">Flow</button>
+            <button data-difficulty="medium" class="active">Clash</button>
+            <button data-difficulty="hard">Precision</button>
+            <button data-difficulty="adaptive">Adaptive</button>
+          </div>
+        </div>
+
+        <div class="panel glass">
+          <div class="panel-heading"><span>Run type</span><small id="mode-note">10 rounds</small></div>
+          <div class="mode-grid" id="mode-options">
+            <button data-mode="run" class="active"><b>Standard Run</b><span>10 rounds</span></button>
+            <button data-mode="marathon"><b>Marathon</b><span>25 rounds • Rank 10</span></button>
+            <button data-mode="endless"><b>Endless</b><span>Open run • Rank 25</span></button>
+          </div>
+        </div>
+
+        <button id="start-game-btn" class="primary-btn">ENTER THE SPECTRUM</button>
+        <div class="footer-note">Offline-first Android Edition • Progress is stored locally on this device.</div>
+      </section>
+
+      <section id="game-screen" class="screen">
+        <div class="run-hud glass">
+          <div><small>ROUND</small><b id="round-label">1 / 10</b></div>
+          <div><small>SCORE</small><b id="score-label">0</b></div>
+          <div><small>STREAK</small><b id="streak-label">0×</b></div>
+          <button id="end-run-btn" class="ghost-btn">End</button>
+        </div>
+
+        <div class="challenge glass">
+          <div class="eyebrow">SOLVE THE MIX</div>
+          <div class="equation">
+            <div class="color-box" id="color1"></div><span>+</span>
+            <div class="color-box mystery" id="color2">?</div><span>=</span>
+            <div class="color-box" id="target-color"></div>
+          </div>
+          <div class="challenge-caption">Which color is X?</div>
+        </div>
+
+        <div class="picker-card glass">
+          <div class="picker-heading">
+            <div><div class="eyebrow">YOUR GUESS</div><div id="selected-rgb">Move across the field</div></div>
+            <div id="selected-color-preview"></div>
+          </div>
+          <canvas id="color-picker" width="320" height="260" aria-label="Saturation and brightness picker"></canvas>
+          <label class="hue-label" for="hue-slider"><span>HUE</span><output id="hue-value">180°</output></label>
+          <input id="hue-slider" class="hue-slider" type="range" min="0" max="359" value="180">
+          <button id="lock-in-btn" class="primary-btn" disabled>LOCK IN</button>
+        </div>
+
+        <div class="timer-wrap glass"><span id="timer-text">30.0</span><div class="timer-track"><div id="timer-bar"></div></div></div>
+      </section>
+    </main>
+  </div>
+
+  <div id="result-overlay" class="overlay hidden" aria-hidden="true">
+    <div class="modal result-modal glass">
+      <div class="result-grade" id="result-grade">A</div>
+      <div class="eyebrow">ROUND VERDICT</div>
+      <h3 id="result-verdict">Chromatic Lock</h3>
+      <div class="comparison">
+        <div><span id="guess-swatch"></span><small>YOUR GUESS</small><b id="guess-rgb">RGB</b></div>
+        <div class="vs">ΔE<br><b id="delta-e">0.00</b></div>
+        <div><span id="target-swatch"></span><small>TARGET</small><b id="target-rgb">RGB</b></div>
+      </div>
+      <div class="result-metrics">
+        <div><small>Accuracy</small><b id="result-accuracy">0%</b></div>
+        <div><small>Points</small><b id="result-points">+0</b></div>
+        <div><small>XP</small><b id="result-xp">+0</b></div>
+      </div>
+      <div id="new-achievements" class="new-achievements hidden"></div>
+      <button id="continue-btn" class="primary-btn">NEXT ROUND</button>
+    </div>
+  </div>
+
+  <div id="summary-overlay" class="overlay hidden" aria-hidden="true">
+    <div class="modal glass">
+      <div class="eyebrow">RUN COMPLETE</div>
+      <h3 id="summary-title">Spectrum Report</h3>
+      <div class="summary-score" id="summary-score">0</div>
+      <div class="summary-grid">
+        <div><small>AVG ACCURACY</small><b id="summary-accuracy">0%</b></div>
+        <div><small>RUN XP</small><b id="summary-xp">+0</b></div>
+        <div><small>BEST STREAK</small><b id="summary-streak">0×</b></div>
+        <div><small>S-GRADES</small><b id="summary-sgrades">0</b></div>
+      </div>
+      <button id="summary-close" class="primary-btn">BACK TO HUB</button>
+    </div>
+  </div>
+
+  <div id="achievements-overlay" class="overlay hidden" aria-hidden="true">
+    <div class="modal tall glass">
+      <div class="modal-header"><div><div class="eyebrow">COLLECTION</div><h3>Achievements</h3></div><button data-close="achievements-overlay" class="icon-btn">×</button></div>
+      <div id="achievement-progress" class="muted"></div>
+      <div id="achievement-list" class="achievement-list"></div>
+    </div>
+  </div>
+
+  <div id="ranks-overlay" class="overlay hidden" aria-hidden="true">
+    <div class="modal tall glass">
+      <div class="modal-header"><div><div class="eyebrow">LONG GAME</div><h3>100 Rank Ladder</h3></div><button data-close="ranks-overlay" class="icon-btn">×</button></div>
+      <div id="rank-list" class="rank-list"></div>
+    </div>
+  </div>
+
+  <div id="toast-stack" aria-live="polite"></div>
+  <script src="game.js"></script>
+</body>
+</html>
