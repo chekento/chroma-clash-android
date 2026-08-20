@@ -12,6 +12,7 @@ permissions:
 jobs:
   bundle:
     runs-on: ubuntu-latest
+    environment: Colorsecrets
     env:
       CHROMA_UPLOAD_KEYSTORE_BASE64: ${{ secrets.CHROMA_UPLOAD_KEYSTORE_BASE64 }}
       CHROMA_UPLOAD_KEYSTORE_PASSWORD: ${{ secrets.CHROMA_UPLOAD_KEYSTORE_PASSWORD }}
