@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="700" viewBox="0 0 1600 700" role="img" aria-labelledby="title desc">
+  <title id="title">Chroma Clash — Download APK</title>
+  <desc id="desc">Neon sci-fi hero artwork for Chroma Clash with direct APK download call to action.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#050816"/><stop offset=".48" stop-color="#0b1230"/><stop offset="1" stop-color="#080514"/></linearGradient>
+    <linearGradient id="rainbow" x1="0" y1="0" x2="1" y2="0"><stop stop-color="#33e6ff"/><stop offset=".22" stop-color="#6effb7"/><stop offset=".45" stop-color="#ffe56b"/><stop offset=".68" stop-color="#ff6cb6"/><stop offset=".86" stop-color="#b36cff"/><stop offset="1" stop-color="#54a3ff"/></linearGradient>
+    <linearGradient id="btn" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#22d3ee"/><stop offset=".5" stop-color="#7c3aed"/><stop offset="1" stop-color="#ec4899"/></linearGradient>
+    <radialGradient id="orb"><stop stop-color="#fff" stop-opacity=".95"/><stop offset=".17" stop-color="#71f6ff" stop-opacity=".9"/><stop offset=".48" stop-color="#7c3aed" stop-opacity=".55"/><stop offset="1" stop-color="#050816" stop-opacity="0"/></radialGradient>
+    <filter id="glow"><feGaussianBlur stdDeviation="12" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+    <filter id="soft"><feGaussianBlur stdDeviation="30"/></filter>
+  </defs>
+  <rect width="1600" height="700" rx="36" fill="url(#bg)"/>
+  <circle cx="1210" cy="105" r="250" fill="#4f46e5" opacity=".22" filter="url(#soft)"/>
+  <circle cx="1360" cy="470" r="250" fill="#ec4899" opacity=".16" filter="url(#soft)"/>
+  <circle cx="240" cy="620" r="220" fill="#22d3ee" opacity=".11" filter="url(#soft)"/>
+  <g opacity=".95">
+    <circle cx="1260" cy="180" r="110" fill="url(#orb)"/>
+    <circle cx="1430" cy="330" r="42" fill="url(#orb)"/>
+    <circle cx="1110" cy="80" r="30" fill="url(#orb)"/>
+    <path d="M1050 420 C1250 250 1470 250 1580 355" fill="none" stroke="url(#rainbow)" stroke-width="4" opacity=".7"/>
+  </g>
+  <g transform="translate(1015 110) rotate(7 230 250)">
+    <rect x="0" y="0" width="420" height="540" rx="52" fill="#050816" stroke="#8be9ff" stroke-opacity=".58" stroke-width="4"/>
+    <rect x="20" y="22" width="380" height="496" rx="38" fill="#0a1024" stroke="#1f2f55"/>
+    <circle cx="210" cy="42" r="8" fill="#02040b"/>
+    <text x="54" y="92" font-family="Arial,Helvetica,sans-serif" font-size="34" font-weight="800" fill="#f7fbff">CHROMA <tspan fill="#63eaff">CLASH</tspan></text>
+    <text x="54" y="121" font-family="Arial,Helvetica,sans-serif" font-size="16" letter-spacing="5" fill="#9eacd0">UNIVERSIA COLORALIS</text>
+    <rect x="52" y="158" width="316" height="82" rx="18" fill="#101a36" stroke="#31466f"/>
+    <text x="72" y="188" font-family="Arial" font-size="16" fill="#90a4cc">RANK</text><text x="72" y="222" font-family="Arial" font-size="30" font-weight="700" fill="#fff">67</text>
+    <rect x="140" y="202" width="185" height="10" rx="5" fill="#1d2842"/><rect x="140" y="202" width="118" height="10" rx="5" fill="url(#rainbow)"/>
+    <g transform="translate(60 278)">
+      <circle cx="150" cy="88" r="84" fill="none" stroke="url(#rainbow)" stroke-width="36" stroke-dasharray="92 18 54 18 78 18 66 18"/>
+      <circle cx="150" cy="88" r="44" fill="#6d28d9" opacity=".7"/>
+      <circle cx="150" cy="88" r="22" fill="#f0abfc"/>
+    </g>
+    <rect x="62" y="455" width="296" height="44" rx="22" fill="url(#btn)"/>
+    <text x="210" y="484" text-anchor="middle" font-family="Arial" font-size="19" font-weight="700" letter-spacing="4" fill="#fff">CLASH</text>
+  </g>
+  <g transform="translate(90 92)">
+    <text x="0" y="0" font-family="Arial,Helvetica,sans-serif" font-size="18" letter-spacing="9" fill="#90a4cc">COLORS CONNECT WORLDS</text>
+    <text x="0" y="112" font-family="Arial,Helvetica,sans-serif" font-size="104" font-weight="900" fill="url(#rainbow)" filter="url(#glow)">CHROMA</text>
+    <text x="0" y="208" font-family="Arial,Helvetica,sans-serif" font-size="98" font-weight="900" letter-spacing="13" fill="#f8fbff">CLASH</text>
+    <text x="4" y="256" font-family="Arial,Helvetica,sans-serif" font-size="26" letter-spacing="8" fill="#d8def5">Universia Coloralis</text>
+    <text x="4" y="310" font-family="Arial,Helvetica,sans-serif" font-size="20" fill="#9eadcf">Precision color challenges. 100 ranks. 40 achievements.</text>
+    <g transform="translate(0 352)">
+      <rect x="0" y="0" width="610" height="118" rx="28" fill="#090f24" stroke="url(#rainbow)" stroke-width="3"/>
+      <path d="M46 32v34m-14-13 14 14 14-14M29 81h34" fill="none" stroke="#71f6ff" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+      <text x="92" y="55" font-family="Arial" font-size="34" font-weight="800" fill="#fff">DOWNLOAD APK</text>
+      <text x="92" y="87" font-family="Arial" font-size="18" letter-spacing="3" fill="#9fafd2">ANDROID • DIRECT DOWNLOAD</text>
+    </g>
+    <g transform="translate(0 512)" font-family="Arial" font-size="17" fill="#dce7ff">
+      <rect x="0" y="0" width="145" height="44" rx="22" fill="#111a33"/><text x="72" y="28" text-anchor="middle">100 RANKS</text>
+      <rect x="160" y="0" width="190" height="44" rx="22" fill="#111a33"/><text x="255" y="28" text-anchor="middle">40 ACHIEVEMENTS</text>
+      <rect x="365" y="0" width="160" height="44" rx="22" fill="#111a33"/><text x="445" y="28" text-anchor="middle">ENDLESS MODE</text>
+      <rect x="540" y="0" width="230" height="44" rx="22" fill="#111a33"/><text x="655" y="28" text-anchor="middle">CIEDE2000 PRECISION</text>
+    </g>
+  </g>
+</svg>
