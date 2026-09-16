@@ -5,18 +5,18 @@
 **A neon sci-fi precision color game by KoSch**  
 Offline-first Android build with **100 ranks**, **40 achievements**, **CIEDE2000 precision scoring** and long-term progression.
 
-<a href="./downloads/chroma-clash.apk">
+<a href="https://github.com/chekento/chroma-clash-android/blob/main/downloads/chroma-clash.apk?raw=1">
   <img src="./assets/frontpage/chroma-clash-hero.svg" alt="Chroma Clash — Download APK" width="100%" />
 </a>
 
 <br />
 
-<a href="./downloads/chroma-clash.apk"><img src="https://img.shields.io/badge/DOWNLOAD-APK-7C3AED?style=for-the-badge&logo=android&logoColor=white" alt="Download APK" /></a>
+<a href="https://github.com/chekento/chroma-clash-android/blob/main/downloads/chroma-clash.apk?raw=1"><img src="https://img.shields.io/badge/DOWNLOAD-APK-7C3AED?style=for-the-badge&logo=android&logoColor=white" alt="Download APK" /></a>
 <img src="https://img.shields.io/badge/ANDROID-OFFLINE--FIRST-111827?style=for-the-badge&logo=android&logoColor=3DDC84" alt="Offline-first Android" />
 <img src="https://img.shields.io/badge/100-RANKS-111827?style=for-the-badge" alt="100 ranks" />
 <img src="https://img.shields.io/badge/40-ACHIEVEMENTS-111827?style=for-the-badge" alt="40 achievements" />
 
-### [⬇ Download the latest APK directly](./downloads/chroma-clash.apk)
+### [⬇ Download the latest APK directly](https://github.com/chekento/chroma-clash-android/blob/main/downloads/chroma-clash.apk?raw=1)
 
 </div>
 
@@ -46,9 +46,9 @@ Offline-first Android build with **100 ranks**, **40 achievements**, **CIEDE2000
 
 ## APK download
 
-**Direct file:** [`downloads/chroma-clash.apk`](./downloads/chroma-clash.apk)
+**Direct download:** [Chroma Clash APK](https://github.com/chekento/chroma-clash-android/blob/main/downloads/chroma-clash.apk?raw=1)
 
-The repository workflow rebuilds the Android APK from `main` and publishes the newest build to this path, so the large download artwork at the top remains a stable download target.
+The repository workflow rebuilds the Android APK from `main` and publishes the newest build to `downloads/chroma-clash.apk`, so the large download artwork at the top remains a stable download target.
 
 **Package:** `cloud.kosch.chromaclash`  
 **Minimum Android:** API 26  
@@ -81,59 +81,33 @@ The curve starts quickly and becomes progressively harder. Rank 100 is designed 
 | D | ≤ 16.00 |
 | F | > 16.00 |
 
-Gameplay accuracy is derived from ΔE (`100 − 4×ΔE`, clamped to 0–100). Difficulty, remaining time and streak quality influence score and XP.
-
-## Modes
-
-- **Standard Run** — 10 rounds
-- **Marathon** — 25 rounds, unlocks at Rank 10
-- **Endless** — unlocks at Rank 25
-- Persistent career statistics and daily streak progression
+Gameplay accuracy is derived from ΔE (`100 − 4×ΔE`, clamped to 0–100). Difficulty, remaining time and streak quality influence points and XP.
 
 ## Build
 
 ### GitHub Actions
+Open **Actions → Build Android APK**. Every successful push build also updates `downloads/chroma-clash.apk` on `main`.
 
-The workflow **Build Android APK** builds the debug APK on pushes to `main`, keeps the normal Actions artifact and also publishes the newest APK into `downloads/chroma-clash.apk` for the stable frontpage download link.
-
-### Local build
-
+### Local
 Requirements: JDK 17+, Android SDK 36 and Gradle 9.5.
 
 ```bash
 gradle :app:assembleDebug
 ```
 
-Output:
-
-```text
-app/build/outputs/apk/debug/app-debug.apk
-```
+APK output: `app/build/outputs/apk/debug/app-debug.apk`
 
 ## Project layout
 
-- `app/src/main/assets/www/` — bundled game UI and game engine
-- `app/src/main/java/.../MainActivity.java` — Android WebView shell
-- `docs/GAME_DESIGN.md` — progression and long-term design notes
-- `.github/workflows/android-apk.yml` — repeatable APK build and frontpage APK publishing
-- `assets/frontpage/` — repository showcase artwork
-- `downloads/` — stable direct APK download target
-- `play-store/` — Google Play submission notes and declarations
+- `app/src/main/assets/www/` — bundled Chroma Clash UI, styling and game engine
+- `app/src/main/java/.../MainActivity.java` — minimal hardened Android WebView shell
+- `docs/GAME_DESIGN.md` — progression and long-term game design notes
+- `.github/workflows/android-apk.yml` — repeatable Android 16 APK build
+- `assets/frontpage/` — frontpage artwork
+- `downloads/chroma-clash.apk` — stable direct APK download target
 
 ## Privacy
 
-Progress is stored locally in Android WebView storage on the device. The current edition contains no analytics SDK, advertising SDK, tracking pixel, login requirement or mandatory remote model/API dependency.
-
-See [`PRIVACY.md`](./PRIVACY.md).
+Progress is stored in Android WebView local storage on the device. This edition contains no analytics SDK, advertising SDK, tracking pixel, login requirement or remote model/API dependency.
 
 </details>
-
----
-
-<div align="center">
-
-**Chroma Clash — More than a color game.**
-
-Built by **KoSch**.
-
-</div>
