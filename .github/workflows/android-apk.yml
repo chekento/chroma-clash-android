@@ -7,7 +7,7 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: read
+  contents: write
 
 jobs:
   build:
@@ -36,10 +36,30 @@ jobs:
       - name: Build debug APK
         run: gradle :app:assembleDebug --stacktrace
 
-      - name: Upload APK
+      - name: Upload APK artifact
         uses: actions/upload-artifact@v4
         with:
           name: chroma-clash-debug-apk
           path: app/build/outputs/apk/debug/app-debug.apk
           if-no-files-found: error
           retention-days: 14
+
+      - name: Publish APK to stable repository download path
+        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p downloads
+          cp app/build/outputs/apk/debug/app-debug.apk downloads/chroma-clash.apk
+
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add downloads/chroma-clash.apk
+
+          if git diff --cached --quiet; then
+            echo "APK is already current."
+            exit 0
+          fi
+
+          git commit -m "chore: publish latest Chroma Clash APK [skip ci]"
+          git push
