@@ -1,0 +1,61 @@
+name: Publish Chroma Clash GitHub Release
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'app/build.gradle'
+      - 'downloads/chroma-clash.apk'
+      - '.github/workflows/publish-current-release.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Resolve current version
+        id: version
+        shell: bash
+        run: |
+          set -euo pipefail
+          VERSION=$(sed -n "s/.*versionName '\\([^']*\\)'.*/\\1/p" app/build.gradle | head -1)
+          test -n "$VERSION"
+          test -f downloads/chroma-clash.apk
+          echo "version=$VERSION" >> "$GITHUB_OUTPUT"
+          echo "tag=v$VERSION" >> "$GITHUB_OUTPUT"
+
+      - name: Prepare release assets
+        shell: bash
+        run: |
+          set -euo pipefail
+          VERSION="${{ steps.version.outputs.version }}"
+          mkdir -p release
+          cp downloads/chroma-clash.apk "release/Chroma-Clash-${VERSION}.apk"
+          sha256sum "release/Chroma-Clash-${VERSION}.apk" > "release/Chroma-Clash-${VERSION}.apk.sha256"
+
+      - name: Create or refresh versioned release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          VERSION="${{ steps.version.outputs.version }}"
+          TAG="${{ steps.version.outputs.tag }}"
+          APK="release/Chroma-Clash-${VERSION}.apk"
+          SUM="${APK}.sha256"
+
+          if gh release view "$TAG" >/dev/null 2>&1; then
+            gh release upload "$TAG" "$APK" "$SUM" --clobber
+          else
+            gh release create "$TAG" "$APK" "$SUM" \
+              --target "$GITHUB_SHA" \
+              --title "Chroma Clash ${VERSION} · Android" \
+              --notes "Public Android test build of Chroma Clash — Universia Coloralis. Offline-first precision color gameplay using CIE Lab / CIEDE2000 scoring." \
+              --prerelease
+          fi
