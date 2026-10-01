@@ -15,6 +15,7 @@ Offline-first Android build with **100 ranks**, **40 achievements**, **CIEDE2000
 <img src="https://img.shields.io/badge/ANDROID-OFFLINE--FIRST-111827?style=for-the-badge&logo=android&logoColor=3DDC84" alt="Offline-first Android" />
 <img src="https://img.shields.io/badge/100-RANKS-111827?style=for-the-badge" alt="100 ranks" />
 <img src="https://img.shields.io/badge/40-ACHIEVEMENTS-111827?style=for-the-badge" alt="40 achievements" />
+<a href="PRIVACY.md"><img src="https://img.shields.io/badge/PRIVACY-AI_%26_THIRD--PARTY-2EA44F?style=for-the-badge" alt="Privacy, AI and third-party transparency" /></a>
 
 ### [⬇ Download the latest APK directly](https://github.com/chekento/chroma-clash-android/blob/main/downloads/chroma-clash.apk?raw=1)
 
